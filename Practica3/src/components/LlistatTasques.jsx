@@ -1,30 +1,28 @@
 import React, { useState } from "react";
 
-
-function LlistatTasques() {
-    //Declara les tasques
+const LlistatTasques = () => {
     const [tasques, setTasques] = useState([]);
+    // Afegir tasca
+    const afegirTasca = (tascaNova) => {
+        setTasques([...tasques, tascaNova]);
+    };
+    // Eliminar tasca
+    const eliminarTasca = (id) => {
+        const tareasRestantes = tasques.filter((tasca, index) => index !== id);
+        setTasques(tareasRestantes);
+    };
+    // Completar tasca 
+    const completarTasca = (id) => {
+        const TascActual = [...tasques];
+        TascActual[id].Completa = !TascActual[id].Completa;
+        setTasques(TascActual);
+    };
 
-    //Afageix tasca
-    // const afegirTasca = tasca => {
-    //     const tasquesActuals = ;
-    //     setTasques(tasquesActuals);
-    // }
-    // //Elimina tasca
-    // const eliminarTasca = id => {
-    //     const tasquesRestants = ;
-    //     setTasques(tasquesRestants);
-    // }
-    // //Completa tasca
-    // const completaTasca = id => {
-    //     tasquesActuals = ;
-    //     setTasques(tasquesRestants);
-    // }
-    return (
+    return(
         <div>
-            <h1>Tareas</h1>
-            <button>Crear Tasca</button>
-            <div className="tareas"></div>
+            <h1>Mis tareas</h1>
         </div>
     )
 }
+
+export default LlistatTasques;
