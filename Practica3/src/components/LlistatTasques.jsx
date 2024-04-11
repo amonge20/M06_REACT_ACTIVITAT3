@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import Formulari from "./Formulari";
+import Tasca from './Tasca';
+import FormulariTasques from "./FormulariTasques";
 
 const LlistatTasques = props => {
     const [tasques, setTasques] = useState([]);
@@ -27,20 +28,17 @@ const LlistatTasques = props => {
     return (
         <div>
           <h1>Mis tareas</h1>
-          <Formulari funcAfegirTasca={afegirTasca} />
-          <ul>
+          <FormulariTasques funcAfegirTasca={afegirTasca} />
             {tasques.map((tasca, index) => (
-              <li key={index}>
-                {tasca.text}
-                <button onClick={() => completarTasca(index)}>
-                  Completar
-                </button>
-                <button onClick={() => eliminarTasca(index)}>
-                  Eliminar
-                </button>
-              </li>
+              <Tasca
+                key={index}
+                id={index}
+                text={tasca.text}
+                completada={tasca.completada}
+                completarTasca={completarTasca}
+                eliminarTasca={eliminarTasca}
+              />
             ))}
-          </ul>
         </div>
       );
     }
