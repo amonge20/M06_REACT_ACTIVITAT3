@@ -19,7 +19,7 @@ const FormulariTasques = ({ funcAfegirTasca }) => {
         
     return(
         <form onSubmit={enviarForm}>
-            <input type="text" value={textTasca} onChange={cambiarTextoTasca} />
+            <input type="text" value={textTasca} placeholder="Introdueix la teva tasca" onChange={cambiarTextoTasca} />
             <button type="submit"> Afegir Tasca </button>
         </form>
     );

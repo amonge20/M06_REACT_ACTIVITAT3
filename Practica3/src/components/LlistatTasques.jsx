@@ -4,26 +4,30 @@ import FormulariTasques from "./FormulariTasques";
 
 const LlistatTasques = props => {
     const [tasques, setTasques] = useState([]);
+    
     // Afegir tasca
     const afegirTasca = tascaNova => {
         const TascActual = [...tasques, tascaNova]
         setTasques(TascActual);
     };
+
     // Eliminar tasca
     const eliminarTasca = (id) => {
-      setTasques(tasques.filter((tasca) => tasca !== id));
+      const newTasques = tasques.filter((value, index) => index != id);
+      setTasques(newTasques);
     };
+
     // Completar tasca 
     const completarTasca = (id) => {
         const TascActual = tasques.map((tasques, tasca) => {
             if (tasca === id) {
-                return { ...tasques, completarTasca: !tasques.completada };
+              return { ...tasques, completada: true };
             }
             return tasques;
         });
         setTasques(TascActual);
     };
-
+    
     return (
         <div>
           <h1>Mis tareas</h1>
