@@ -6,18 +6,17 @@ const LlistatTasques = props => {
     const [tasques, setTasques] = useState([]);
     // Afegir tasca
     const afegirTasca = tascaNova => {
-        const tascActual = [...tasques, tascaNova]
-        setTasques(tascActual);
+        const TascActual = [...tasques, tascaNova]
+        setTasques(TascActual);
     };
     // Eliminar tasca
     const eliminarTasca = (id) => {
-        const tasquesRestants = tasques.filter((tasca, index) => index !== id);
-        setTasques(tasquesRestants);
+      setTasques(tasques.filter((tasca) => tasca !== id));
     };
     // Completar tasca 
     const completarTasca = (id) => {
-        const TascActual = tasques.map((tasques, index) => {
-            if (index === id) {
+        const TascActual = tasques.map((tasques, tasca) => {
+            if (tasca === id) {
                 return { ...tasques, completarTasca: !tasques.completada };
             }
             return tasques;
